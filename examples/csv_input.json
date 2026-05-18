@@ -1,0 +1,29 @@
+{
+  "question": "How should we assess this dataset before training a churn model?",
+  "columns": [
+    "customer_id",
+    "plan_type",
+    "tenure_months",
+    "monthly_spend",
+    "support_tickets",
+    "is_churned"
+  ],
+  "sample_rows": [
+    {
+      "customer_id": 101,
+      "plan_type": "basic",
+      "tenure_months": 3,
+      "monthly_spend": 19.99,
+      "support_tickets": 2,
+      "is_churned": 1
+    },
+    {
+      "customer_id": 102,
+      "plan_type": "pro",
+      "tenure_months": 16,
+      "monthly_spend": 54.99,
+      "support_tickets": 0,
+      "is_churned": 0
+    }
+  ]
+}

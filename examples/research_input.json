@@ -1,0 +1,5 @@
+{
+  "objective": "Summarize the notes into an executive brief for a product manager.",
+  "audience": "product manager",
+  "source_notes": "Customers want faster onboarding, support tickets spike during data import, analysts ask for CSV validation before upload, and the sales team wants a lightweight demo environment without production credentials."
+}
