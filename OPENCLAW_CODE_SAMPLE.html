@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI Agents Portfolio - Code Sample</title>
+  <style>
+    @page {
+      size: Letter;
+      margin: 0.65in;
+    }
+
+    body {
+      color: #1f2933;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    h1 {
+      color: #102a43;
+      font-size: 21pt;
+      margin: 0 0 4px;
+    }
+
+    h2 {
+      border-bottom: 1px solid #d9e2ec;
+      color: #243b53;
+      font-size: 12.5pt;
+      margin: 18px 0 7px;
+      padding-bottom: 3px;
+    }
+
+    p {
+      margin: 0 0 8px;
+    }
+
+    ul {
+      margin: 5px 0 8px 18px;
+      padding: 0;
+    }
+
+    li {
+      margin: 3px 0;
+    }
+
+    code {
+      background: #f0f4f8;
+      border-radius: 3px;
+      color: #102a43;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 9.5pt;
+      padding: 1px 4px;
+    }
+
+    pre {
+      background: #f0f4f8;
+      border: 1px solid #d9e2ec;
+      border-radius: 5px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 9.25pt;
+      line-height: 1.35;
+      margin: 7px 0 10px;
+      padding: 9px 10px;
+      white-space: pre-wrap;
+    }
+
+    a {
+      color: #0b5cad;
+      text-decoration: none;
+    }
+
+    .meta {
+      color: #52606d;
+      font-size: 10pt;
+      margin-bottom: 14px;
+    }
+
+    .summary {
+      background: #f8fafc;
+      border-left: 4px solid #0b5cad;
+      margin: 10px 0 14px;
+      padding: 10px 12px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .box {
+      border: 1px solid #d9e2ec;
+      border-radius: 5px;
+      padding: 9px 10px;
+    }
+
+    .box strong {
+      color: #102a43;
+    }
+
+    .footer {
+      color: #627d98;
+      font-size: 9pt;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Agents Portfolio</h1>
+  <p class="meta">
+    Technical work sample for software engineering and AI training roles<br>
+    GitHub: <a href="https://github.com/yueLight12/ai-agents-portfolio">https://github.com/yueLight12/ai-agents-portfolio</a>
+  </p>
+
+  <div class="summary">
+    <p><strong>Summary:</strong> A compact Python AI agent platform with FastAPI endpoints, CLI demos, reusable agent classes, structured outputs, a pluggable LLM provider layer, deterministic mock mode, and pytest coverage.</p>
+  </div>
+
+  <h2>Project Purpose</h2>
+  <p>
+    This project demonstrates practical AI application engineering rather than a one-off prompt script. It separates agent logic, prompt responsibilities, model-provider access, API transport, CLI execution, examples, and tests so the system can be reviewed, extended, and evaluated.
+  </p>
+
+  <h2>What The Reviewer Can Inspect</h2>
+  <div class="grid">
+    <div class="box">
+      <strong>Agent Design</strong>
+      <ul>
+        <li><code>interview-coach</code>: tailored pitch, likely questions, STAR stories, gap risks.</li>
+        <li><code>research-brief</code>: executive summary, findings, risks, recommendations, next steps.</li>
+        <li><code>csv-insight</code>: data checks, hypotheses, feature ideas, charts, analysis plan.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <strong>Engineering Surface</strong>
+      <ul>
+        <li>FastAPI service for HTTP execution.</li>
+        <li>CLI for local JSON-based demos.</li>
+        <li>Pydantic schemas for response contracts.</li>
+        <li>Pytest tests for key behavior.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Technical Stack</h2>
+  <ul>
+    <li><strong>Language:</strong> Python 3.10+</li>
+    <li><strong>API:</strong> FastAPI</li>
+    <li><strong>Validation:</strong> Pydantic</li>
+    <li><strong>LLM integration:</strong> OpenAI SDK behind a provider abstraction</li>
+    <li><strong>Testing:</strong> Pytest</li>
+    <li><strong>Packaging:</strong> <code>pyproject.toml</code> with editable install support</li>
+  </ul>
+
+  <h2>Relevant Design Decisions</h2>
+  <ul>
+    <li><strong>Provider abstraction:</strong> business logic does not directly depend on one model vendor.</li>
+    <li><strong>Mock mode:</strong> the app can run and be tested without a live API key or network dependency.</li>
+    <li><strong>Structured outputs:</strong> agent responses are returned as dictionaries suitable for downstream evaluation or UI integration.</li>
+    <li><strong>Shared core logic:</strong> the same agent registry powers both the API and CLI.</li>
+    <li><strong>Small review surface:</strong> the repo is intentionally compact so reviewers can understand the architecture quickly.</li>
+  </ul>
+
+  <h2>Repository Structure</h2>
+  <pre>ai-agents-portfolio/
+  src/ai_agents_portfolio/
+    agents/
+    app.py
+    cli.py
+    config.py
+    llm.py
+    registry.py
+    schemas.py
+  examples/
+  tests/
+  pyproject.toml
+  README.md
+  CODE_SAMPLE.md</pre>
+
+  <h2>How To Run Locally</h2>
+  <pre>cd ai-agents-portfolio
+python -m venv .venv
+.venv\Scripts\activate
+pip install -e .[dev]
+python -m pytest</pre>
+
+  <p>Run the API:</p>
+  <pre>uvicorn ai_agents_portfolio.app:app --reload --port 8010</pre>
+
+  <p>Run the CLI:</p>
+  <pre>python -m ai_agents_portfolio.cli list
+python -m ai_agents_portfolio.cli run interview-coach --input examples/interview_input.json</pre>
+
+  <h2>Verification</h2>
+  <p>
+    The local test suite was run successfully with <code>python -m pytest</code>. Result: <strong>4 tests passed</strong>.
+  </p>
+
+  <h2>Why This Fits AI Training Work</h2>
+  <p>
+    The project shows prompt-driven workflow design, structured output expectations, reproducible local behavior, and clean separation between AI behavior and application plumbing. These are useful qualities for evaluating, improving, and operationalizing AI-assisted systems.
+  </p>
+
+  <p class="footer">
+    Prepared as a concise code sample. Full source code is available at the GitHub link above.
+  </p>
+</body>
+</html>
